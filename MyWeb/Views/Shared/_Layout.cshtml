@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - 欧阳晓峰的个人网站</title>
+    <link href="http://www.oyxf.cc/favicon.ico" rel="icon" type="image/x-icon" />
+
+    @* css样式 *@
+    @Styles.Render("~/bundles/commoncss")
+    @Styles.Render("~/bundles/css")
+    @RenderSection("css", required: false)
+
+    @* js文件 *@
+    @Scripts.Render("~/bundles/commonjs")
+
+</head>
+<body>
+    @*@Html.ActionLink("应用程序名称", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+    @*@Html.ActionLink("主页", "Index", "Home")*@
+    <!--遮罩层-->
+    <div id="ZheZhao" class="zhezhao"><a onclick="CloseZheZhao()"><i class="fa fa-remove-ie"></i></a><img src="~/images/oyxf.jpg"></div>
+
+    <!--左边菜单-->
+    <div id="left" class="left">
+        <a onclick="OpenZheZhao()" alt="我的头像" title="点击放大"><img class="head" src="~/images/oyxf.jpg"></a>
+        <ul id="menu" class="menu">
+            @* 拼接菜单 *@
+            @using System.Data;
+            @{
+                DataTable dt = new DataTable();
+                dt.Columns.Add("action", typeof(String));
+                dt.Columns.Add("name", typeof(String));
+                dt.Rows.Add("intro", "个人简介");
+                dt.Rows.Add("program", "我的项目");
+                dt.Rows.Add("life", "我的生活");
+
+                string controllerName = ViewContext.RouteData.Values["controller"].ToString();
+                string actionName = ViewContext.RouteData.Values["action"].ToString();
+
+            }
+            @foreach (DataRow rows in dt.Rows)
+            {
+
+                string style = "";
+                if (rows["action"].ToString().ToLower() == actionName.ToLower())
+                {
+                    style = "class='active'";
+                }
+                @Html.Raw(string.Format("<li {0}>", style))
+                @Html.ActionLink(rows["name"].ToString(), rows["action"].ToString(), controllerName)
+                @Html.Raw(string.Format("</li>"))
+            }
+        </ul>
+        <!--菜单隐藏按钮-->
+        <a id="hideLogo" class="hideLogo" onclick="SwitchMenu()"><i class="fa fa-arrows-h"></i></a>
+    </div>
+
+    <!--菜单显示按钮-->
+    <a id="showLogo" class="showLogo" onclick="SwitchMenu()"><i class="fa fa-arrows-h-ie"></i></a>
+
+
+    <!--右边部分-->
+    <div id="right" class="right">
+        <!--刷新加载动画-->
+        <div id="loadDiv" class="loadDiv"><img src="~/images/loading.gif"></div>
+        <div id="rightTop" class="rightTop">
+            <a onclick="OpenZheZhao()" alt="我的头像" title="点击放大"><img class="head" src="~/images/oyxf.jpg"></a>
+            <div id="mobileMenuIcon" class="mobileMenuIcon"><span class="fa fa-navicon "></span></div>
+        </div>
+        <ul id="mobileMenu" class="mobileMenu">
+            @* 拼接移动端菜单 *@
+            @foreach (DataRow rows in dt.Rows)
+            {
+
+                string style = "";
+                if (rows["action"].ToString().ToLower() == actionName.ToLower())
+                {
+                    style = "class='active'";
+                }
+                @Html.Raw(string.Format("<li {0}>", style))
+                @Html.ActionLink(rows["name"].ToString(), rows["action"].ToString(), controllerName)
+                @Html.Raw(string.Format("</li>"))
+            }
+        </ul>
+        <div id="main" class="right_pad">
+            @RenderBody()
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

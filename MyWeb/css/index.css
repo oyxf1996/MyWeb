@@ -1,0 +1,452 @@
+﻿
+/*
+--------------------------------------------------------
+【左边部分】
+--------------------------------------------------------
+▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
+*/
+.left {
+    position: relative;
+    clear: left;
+    float: left;
+    width: 240px;
+    height: 100%;
+    background-color: #2D333C;
+    text-align: center;
+}
+
+@media screen and (max-width:1200px) {
+    .left {
+        width: 0;
+        display: none;
+    }
+}
+
+.left .head {
+    width: 80px;
+    height: 80px;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.left h2 {
+    font-size: 18px;
+    color: white;
+}
+
+.menu {
+    padding: 20px 0;
+    width: 100%;
+    max-height: 450px;
+    overflow: hidden;
+    transition: all 1s;
+    -moz-transition: all 1s; /* Firefox 4 */
+    -webkit-transition: all 1s; /* Safari 和 Chrome */
+    -o-transition: all 1s; /* Opera */
+}
+
+    .menu:hover {
+        overflow: auto;
+    }
+
+    .menu li {
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        box-shadow: 1px 1px 1px rgba(21,21,21,0.3);
+    }
+
+        .menu li a {
+            transition: all 0.2s;
+            display: block;
+            width: 100%;
+            height: 100%;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+            .menu li a:hover {
+                background-color: #f2f2f2;
+                color: #2D333C
+            }
+
+        .menu li.active a {
+            background-color: #f2f2f2;
+            color: #2D333C
+        }
+
+.left a.hideLogo {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    bottom: 10px;
+    left: 180px;
+    z-index: 999;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+}
+
+    .left a.hideLogo:hover {
+        color: #96a53f;
+    }
+
+a.showLogo {
+    display: none;
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1000;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+    background-color: #2D333C;
+    text-align: center;
+    padding-top: 10px;
+}
+
+    a.showLogo:hover {
+        color: #96a53f;
+    }
+/*
+▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+--------------------------------------------------------
+左边部分
+--------------------------------------------------------
+*/
+
+/* 遮罩层 */
+.zhezhao {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10000;
+}
+
+    .zhezhao img {
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+@media screen and (max-width:1200px){
+    .zhezhao img {
+        width: 200px;
+        height: 200px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+}
+
+.zhezhao i {
+    font-size: 30px;
+    color: white;
+}
+
+.zhezhao a {
+    position: absolute;
+    top: 80px;
+    right: 160px;
+    cursor: pointer;
+}
+@media screen and (max-width:1200px) {
+    .zhezhao a {
+        right: 30px;
+    }
+}
+
+
+/* 滚动条样式 */
+::-webkit-scrollbar-track-piece {
+    background-color: #cecece;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    height: 50px;
+    background: #898989;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #51595d;
+        cursor: pointer
+    }
+
+
+
+/*
+--------------------------------------------------------
+【右边部分】
+--------------------------------------------------------
+▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
+*/
+.right {
+    position: relative;
+    float: right;
+    width: calc(100% - 240px);
+    height: 100%;
+    background-color: #f2f2f2;
+    overflow-y: auto;
+}
+
+@media screen and (max-width:1200px) {
+    .right {
+        width: 100% !important;
+    }
+}
+
+.right .right_pad {
+    width: 100%;
+    padding: 60px;
+}
+
+@media screen and (max-width:1200px) {
+    .right .right_pad {
+        padding: 20px;
+        padding-top:100px;
+    }
+}
+
+/* 移动端菜单 */
+.rightTop {
+    position:fixed;
+    display:none;
+    width: 100%;
+    height: 70px;
+    background-color: #2D333C;
+    z-index:9999;
+}
+@media screen and (max-width:1200px) {
+    .rightTop {
+        display:block;
+    }
+}
+
+.rightTop .head {
+    float:left;
+    width: 46px;
+    height: 46px;
+    margin-top: 12px;
+    margin-left:30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.rightTop .mobileMenuIcon {
+    /*appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;*/
+    background-color: #f2f2f2;
+    float: right;
+    outline: none;
+    margin-top: 19px;
+    margin-right: 30px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+    .rightTop .mobileMenuIcon:hover {
+        cursor: pointer;
+    }
+
+    .rightTop .mobileMenuIcon span {
+        font-size: 20px;
+    }
+
+.mobileMenu {
+    display:none;
+    margin-top:70px;
+    position:fixed;
+    width: 100%;
+    background-color: #2d333c;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+@media screen and (min-width:1200px) {
+    .mobileMenu {
+        display: none !important;
+    }
+}
+
+    .mobileMenu li {
+        width: 100%;
+        display: inline-block;
+    }
+
+        .mobileMenu li a {
+            display: block;
+            width: 100%;
+            padding: 8px;
+            color: white;
+            font-size: 16px;
+        }
+        .mobileMenu li.active a {
+            color: #2D333C;
+            background-color: #f2f2f2;
+        }
+            .mobileMenu li a:hover {
+                color: #2D333C;
+                background-color: #f2f2f2;
+            }
+        
+
+.right .right_pad .title {
+    width: 100%;
+    padding-bottom: 60px;
+}
+
+.right .title h2 {
+    padding-bottom: 20px;
+}
+@media screen and (max-width:1200px){
+    .right .title h2 {
+        text-align:center;
+    }
+}
+
+.right .title .list_info li {
+    width: auto;
+    display: inline-block; /*这边不用，float:left; 浮动会导致li不占宽高，ul宽高会有问题*/
+    font-size: 18px;
+    padding-right: 60px;
+    height: 30px;
+    text-align: left;
+    line-height: 30px;
+}
+
+.right .title .list_info:after {
+    clear: both;
+}
+
+.right .title .list_info li i {
+    padding-right: 8px;
+}
+
+
+/* 表格样式1 */
+.tb_1, .tb_1 tr th, .tb_1 tr td {
+    border: 1px solid #2D333C;
+}
+
+.tb_1 {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+    .tb_1 tr th, .tb_1 tr td {
+        padding: 4px;
+    }
+
+    .tb_1 tr th {
+        background-color: #fbfbfb;
+    }
+
+/* 加载中动画 */
+.loadDiv.active {
+    display: block;
+}
+
+.loadDiv {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.1);
+    z-index: 999;
+    text-align: center; /*水平居中*/
+}
+
+    .loadDiv:after { /*垂直居中*/
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        height: 100%;
+    }
+
+.list_order {
+    padding-top: 26px;
+    padding-left: 24px;
+    position: relative;
+    width: 100%;
+    border-left: 2px solid black;
+}
+
+    .list_order .pBlock {
+        height: 30px;
+        background-color: #f2f2f2;
+    }
+
+    .list_order li {
+        display: inline;
+        position: relative;
+        padding-top: 40px;
+        width: 100%;
+        height: 120px;
+    }
+
+        .list_order li i {
+            position: absolute;
+            left: -33px;
+            font-size: 20px;
+        }
+
+        .list_order li table {
+            padding: 1px 0 1px 16px;
+            background-color: #fbfbfb;
+            border: 1px solid #7d7d7d;
+        }
+
+        .list_order li p {
+            padding: 6px;
+            background-color: #dadada;
+        }
+
+/* 表格样式2 */
+.tb_2, .tb_2 tr th, .tb_2 tr td {
+    border: 1px solid #2D333C;
+}
+
+.tb_2 {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+    .tb_2 tr th, .tb_2 tr td {
+        padding: 2px;
+        border-left: none;
+    }
+
+.blueFont {
+    background-color: #95c2ff;
+}
+
+/*
+▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+--------------------------------------------------------
+右边部分
+--------------------------------------------------------
+*/
+
+
+
+
