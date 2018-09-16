@@ -16,20 +16,20 @@ namespace MyWeb
         {
             base.OnException(filterContext);
 
-            LogHelper log = new LogHelper();
-            string controller = filterContext.RouteData.Values["controller"].ToString();
-            string action = filterContext.RouteData.Values["action"].ToString();
-            string info = string.Format("【Controller:{0}】【Action:{1}】",controller,action);
+            string controller = filterContext.RequestContext.RouteData.Values["controller"].ToString();
+            string action = filterContext.RequestContext.RouteData.Values["action"].ToString();
+            string info = string.Format("【*】Controller:{0}，Action:{1}【*】", controller,action);
 
-            if (filterContext.Exception.InnerException!=null)
+            //将异常入队，交由另一个线程处理
+            if (filterContext.Exception.InnerException != null)
             {
-                log.Debug(info, filterContext.Exception.InnerException);
+                ExceptionHelper.Enqueue(info, filterContext.Exception.InnerException);
             }
             else
             {
-                log.Debug(info, filterContext.Exception);
+                ExceptionHelper.Enqueue(info,filterContext.Exception);
             }
-            
+
             //页面跳转到错误页面
             filterContext.HttpContext.Response.Redirect("~/Error.html");
         }
