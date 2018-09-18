@@ -12,9 +12,6 @@ namespace MyWeb.Controllers
         // GET: GeRen
         public ActionResult Intro()
         {
-            int i = 10;
-            int j = 0;
-            int z = i / j;
             return View();
         }
         public ActionResult Program()

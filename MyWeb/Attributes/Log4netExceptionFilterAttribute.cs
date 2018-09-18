@@ -30,8 +30,12 @@ namespace MyWeb
                 ExceptionHelper.Enqueue(info,filterContext.Exception);
             }
 
+            //异常标记为已处理
+            filterContext.ExceptionHandled = true;
+
             //页面跳转到错误页面
-            filterContext.HttpContext.Response.Redirect("~/Error.html");
+            //filterContext.HttpContext.Response.Redirect("~/Error.html");
+            filterContext.Result = new RedirectResult("~/Error.html");
         }
     }
 }
